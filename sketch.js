@@ -1,4 +1,5 @@
-///<reference path="C:\Users\Seki\node_modules\@types\p5\global.d.ts"/>
+//<reference path="C:\Users\Seki\node_modules\@types\p5\global.d.ts"/>
+
 const nomes = {
   0: "A",
   1: "B",
@@ -37,10 +38,11 @@ let start_x = 0,
 let flag_inicio = false;
 
 function setup() {
-  createCanvas(1000, 600);
+  const cnv = createCanvas(1000, 600);
 
   strokeWeight(4);
-  background("#f6f8fa");
+  cnv.background('#f6f8fa');
+  // background("#f6f8fa");
   // put setup code here
 }
 
@@ -113,7 +115,12 @@ function desenharPonto(x, y, nome) {
   if (barras.length !== 0) {
     for (let i = 0; i < barras.length; i++) {
       if (barras[i].endx === x && barras[i].endy === y) {
-        pontos.push(new Ponto(x, y, nome));
+        const existe = pontos.find(ponto => {
+          return (ponto.x == x && ponto.y == y)
+        })
+        if (!existe) {
+          pontos.push(new Ponto(x, y, nome));
+        }
         break;
       }
     }
@@ -126,23 +133,28 @@ function desenharBarra(startx, starty, endx, endy) {
   else {
     let difx = 0;
     let dify = 0;
-    for (let i = 0; i < barras.length; i++) {
-      endx > barras[i].initx
-        ? (difx = endx - barras[i].initx)
-        : (difx = barras[i].initx - endx);
-      endy > barras[i].inity
-        ? (dify = endy - barras[i].inity)
-        : (dify = barras[i].inity - endy);
+    for (let z = 0; z < barras.length; z++) {
+      endx > barras[z].initx
+        ? (difx = endx - barras[z].initx)
+        : (difx = barras[z].initx - endx);
+      endy > barras[z].inity
+        ? (dify = endy - barras[z].inity)
+        : (dify = barras[z].inity - endy);
 
       console.log(`difx = ${difx} , dify = ${dify}`);
 
-      if (difx < 100 && dify < 100) {
+      if (difx < 75 && dify < 75) {
         barras.push(
-          new Barra(startx, starty, barras[i].initx, barras[i].inity)
+          new Barra(startx, starty, barras[z].initx, barras[z].inity)
         );
-        end_x = barras[i].initx;
-        end_y = barras[i].inity;
+        end_x = barras[z].initx;
+        end_y = barras[z].inity;
         flag_desenhou = true;
+        if (barras[barras.length - 1].endx === barras[0].initx &&
+          barras[barras.length - 1].endy === barras[0].inity) {
+          pontos.push(new Ponto(barras[0].initx, barras[0].inity, nomes[barras.length - 1]));
+        }
+        break;
       }
     }
     if (!flag_desenhou) barras.push(new Barra(startx, starty, endx, endy));
