@@ -53,23 +53,28 @@ function draw() {
 
 function mouseClicked() {
   console.log(`ponto clicado: (${mouseX} , ${mouseY})`);
+  try {
+    if (squareClick(mouseX, mouseY)) {
+      if (!flag_inicio) {
+        start_x = mouseX;
+        start_y = mouseY;
 
-  if (!flag_inicio) {
-    start_x = mouseX;
-    start_y = mouseY;
+        flag_inicio = true;
+      } else {
+        end_x = mouseX;
+        end_y = mouseY;
 
-    flag_inicio = true;
-  } else {
-    end_x = mouseX;
-    end_y = mouseY;
+        //pontos.push(new Ponto(end_x, end_y, nomes[pontos.length]));
+        desenharPonto(start_x, start_y, nomes[pontos.length]);
+        desenharBarra(start_x, start_y, end_x, end_y);
+        //barras.push(new Barra(start_x, start_y, end_x, end_y));
 
-    //pontos.push(new Ponto(end_x, end_y, nomes[pontos.length]));
-    desenharPonto(start_x, start_y, nomes[pontos.length]);
-    desenharBarra(start_x, start_y, end_x, end_y);
-    //barras.push(new Barra(start_x, start_y, end_x, end_y));
-
-    start_x = end_x;
-    start_y = end_y;
+        start_x = end_x;
+        start_y = end_y;
+      }
+    }
+  } catch (error) {
+    alert(`error`);
   }
 }
 
@@ -168,4 +173,9 @@ function desenharBarra(startx, starty, endx, endy) {
     }
     if (!flag_desenhou) barras.push(new Barra(startx, starty, endx, endy));
   }
+}
+
+function squareClick(x, y) {
+  if (x > 5 && x < 995 && (y > 5 && y < 495)) return true;
+  return false;
 }

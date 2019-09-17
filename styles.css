@@ -15,6 +15,7 @@ body div#container {
   width: 1000px;
   padding: 0 25px 50px;
   overflow: hidden;
+  margin: 0 auto;
 }
 body div#principal {
   background: #fafafa;
