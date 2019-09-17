@@ -41,7 +41,7 @@ function setup() {
   const cnv = createCanvas(1000, 500);
 
   strokeWeight(4);
-  cnv.background("#e0e0e0");
+  cnv.background("#f0f0f0");
   cnv.parent("principal");
   // background("#f6f8fa");
   // put setup code here
