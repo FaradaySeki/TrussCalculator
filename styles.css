@@ -1,14 +1,42 @@
 body {
-  padding: 0;
   margin: 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #bbf1;
+  background: #dad3d3;
+  background-image: url("./gradientgray2.jpg");
+}
+body div#container {
+  background: #f3f3f3;
+  border-right: 5px double black;
+  border-left: 5px double black;
+  width: 1000px;
+  padding: 0 25px 50px;
+  overflow: hidden;
+}
+body div#principal {
+  background: #f3f3f3;
+  width: 100%;
+  height: 100%;
+}
+body div#principal div {
+  text-align: center;
+}
+body div#principal img {
+  background: rgb(54, 53, 53);
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+}
+body h1 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: black;
+  font-size: 20px;
 }
 body canvas {
-  border: 1px solid black;
-  border-radius: 20px;
+  border: 3px double black;
+  border-radius: 15px;
 }
-

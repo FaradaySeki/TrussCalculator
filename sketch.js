@@ -1,4 +1,4 @@
-//<reference path="C:\Users\Seki\node_modules\@types\p5\global.d.ts"/>
+///<reference path="C:\Users\Seki\node_modules\@types\p5\global.d.ts"/>
 
 const nomes = {
   0: "A",
@@ -38,10 +38,11 @@ let start_x = 0,
 let flag_inicio = false;
 
 function setup() {
-  const cnv = createCanvas(1000, 600);
+  const cnv = createCanvas(1000, 500);
 
   strokeWeight(4);
-  cnv.background('#f6f8fa');
+  cnv.background("#e0e0e0");
+  cnv.parent("principal");
   // background("#f6f8fa");
   // put setup code here
 }
@@ -116,8 +117,8 @@ function desenharPonto(x, y, nome) {
     for (let i = 0; i < barras.length; i++) {
       if (barras[i].endx === x && barras[i].endy === y) {
         const existe = pontos.find(ponto => {
-          return (ponto.x == x && ponto.y == y)
-        })
+          return ponto.x == x && ponto.y == y;
+        });
         if (!existe) {
           pontos.push(new Ponto(x, y, nome));
         }
@@ -150,9 +151,17 @@ function desenharBarra(startx, starty, endx, endy) {
         end_x = barras[z].initx;
         end_y = barras[z].inity;
         flag_desenhou = true;
-        if (barras[barras.length - 1].endx === barras[0].initx &&
-          barras[barras.length - 1].endy === barras[0].inity) {
-          pontos.push(new Ponto(barras[0].initx, barras[0].inity, nomes[barras.length - 1]));
+        if (
+          barras[barras.length - 1].endx === barras[0].initx &&
+          barras[barras.length - 1].endy === barras[0].inity
+        ) {
+          pontos.push(
+            new Ponto(
+              barras[0].initx,
+              barras[0].inity,
+              nomes[barras.length - 1]
+            )
+          );
         }
         break;
       }
