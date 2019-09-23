@@ -37,20 +37,48 @@ let start_x = 0,
 
 let flag_inicio = false;
 
-function setup() {
-  const cnv = createCanvas(1000, 500);
+let cols = 34;
+let rows = 16;
 
-  strokeWeight(4);
-  cnv.background("#f0f0f0");
+let cnv;
+let backcnv;
+
+function setup() {
+  cnv = createCanvas(993, 497);
+  backcnv = createGraphics(993, 497);
+  backcnv.strokeWeight(1);
+  cnv.background(0);
   cnv.parent("principal");
   // background("#f6f8fa");
   // put setup code here
+  desenharGrid();
 }
 
-function draw() {
-  // put drawing code here
+function draw() {}
+function mouseMoved() {
+  //clear();
+  desenharGrid();
+  backcnv.style("z-index", "-1");
+  cnv.style("z-index", "1");
+  textSize(10);
+  textLeading(30);
+  textStyle(BOLDITALIC);
+  let cords = `(${mouseX.toFixed(2)},${mouseY.toFixed(2)})`;
+  text(cords, mouseX + 10, mouseY, 500, 500);
 }
+function desenharGrid() {
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      let x = i * 31;
+      let y = j * 31;
+      backcnv.stroke(75);
+      backcnv.rect(x, y, 31, 31);
+    }
+  }
+  image(backcnv, 0, 0);
 
+  strokeWeight(2);
+}
 function mouseClicked() {
   console.log(`ponto clicado: (${mouseX} , ${mouseY})`);
   try {
