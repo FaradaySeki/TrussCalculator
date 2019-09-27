@@ -25,6 +25,8 @@ const nomes = {
   21: "V"
 };
 
+const span = document.getElementById("cursor");
+
 let barras = [];
 let componentesX = [];
 let componentesY = [];
@@ -56,6 +58,11 @@ function setup() {
 
 function draw() {}
 function mouseMoved() {
+  if (!(mouseX > 993 || mouseX < 3 || mouseY < 3 || mouseY > 497)) {
+    let cords = `(${mouseX.toFixed(3)} , ${mouseY.toFixed(3)})`;
+    span.textContent = cords;
+  }
+
   //clear();
   //desenharGrid();
   //backcnv.style("z-index", "-1");
