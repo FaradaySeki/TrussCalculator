@@ -57,14 +57,14 @@ function setup() {
 function draw() {}
 function mouseMoved() {
   //clear();
-  desenharGrid();
-  backcnv.style("z-index", "-1");
-  cnv.style("z-index", "1");
-  textSize(10);
-  textLeading(30);
-  textStyle(BOLDITALIC);
-  let cords = `(${mouseX.toFixed(2)},${mouseY.toFixed(2)})`;
-  text(cords, mouseX + 10, mouseY, 500, 500);
+  //desenharGrid();
+  //backcnv.style("z-index", "-1");
+  //cnv.style("z-index", "1");
+  //textSize(10);
+  //textLeading(30);
+  //textStyle(BOLDITALIC);
+  // let cords = `(${mouseX.toFixed(2)},${mouseY.toFixed(2)})`;
+  // text(cords, mouseX + 10, mouseY, 500, 500);
 }
 function desenharGrid() {
   for (let i = 0; i < cols; i++) {
