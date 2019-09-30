@@ -1,4 +1,4 @@
-///<reference path="C:\Users\Seki\node_modules\@types\p5\global.d.ts"/>
+///<reference path="C:\Users\SMRF\Desktop\TrussCalculator\node_modules\@types\p5\global.d.ts"/>
 
 const nomes = {
   0: "A",
@@ -46,20 +46,21 @@ let cnv;
 let backcnv;
 
 function setup() {
-  cnv = createCanvas(993, 497);
-  backcnv = createGraphics(993, 497);
+  cnv = createCanvas(994, 500);
+  backcnv = createGraphics(994, 500);
   backcnv.strokeWeight(1);
-  cnv.background(0);
+  //cnv.background(0);
   cnv.parent("principal");
   // background("#f6f8fa");
   // put setup code here
-  desenharGrid();
+  cnv.strokeWeight(1);
+  desenharGrid(backcnv);
 }
 
-function draw() {}
+function draw() { }
 function mouseMoved() {
-  if (!(mouseX > 993 || mouseX < 3 || mouseY < 3 || mouseY > 497)) {
-    let cords = `(${mouseX.toFixed(3)} , ${mouseY.toFixed(3)})`;
+  if (!(mouseX > 994 || mouseX < 3 || mouseY < 3 || mouseY > 499)) {
+    let cords = `(${mouseX.toFixed(0)} , ${mouseY.toFixed(0)})`;
     span.textContent = cords;
   }
 
@@ -73,16 +74,16 @@ function mouseMoved() {
   // let cords = `(${mouseX.toFixed(2)},${mouseY.toFixed(2)})`;
   // text(cords, mouseX + 10, mouseY, 500, 500);
 }
-function desenharGrid() {
+function desenharGrid(cnv) {
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
       let x = i * 31;
       let y = j * 31;
-      backcnv.stroke(75);
-      backcnv.rect(x, y, 31, 31);
+      cnv.stroke(75);
+      cnv.rect(x, y, 31, 31);
     }
   }
-  image(backcnv, 0, 0);
+  image(cnv, 0, 0);
 
   strokeWeight(2);
 }
