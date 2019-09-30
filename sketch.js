@@ -26,6 +26,16 @@ const nomes = {
 };
 
 const span = document.getElementById("cursor");
+const trash = document.getElementById("trash");
+trash.onclick = () => {
+  cnv.clear();
+  desenharGrid(backcnv);
+  barras = [];
+  componentesX = [];
+  componentesY = [];
+  pontos = [];
+  flag_inicio = false;
+};
 
 let barras = [];
 let componentesX = [];
@@ -50,14 +60,14 @@ function setup() {
   backcnv = createGraphics(994, 500);
   backcnv.strokeWeight(1);
   //cnv.background(0);
-  cnv.parent("principal");
+  cnv.parent("divUseless");
   // background("#f6f8fa");
   // put setup code here
   cnv.strokeWeight(1);
   desenharGrid(backcnv);
 }
 
-function draw() { }
+function draw() {}
 function mouseMoved() {
   if (!(mouseX > 994 || mouseX < 3 || mouseY < 3 || mouseY > 499)) {
     let cords = `(${mouseX.toFixed(0)} , ${mouseY.toFixed(0)})`;

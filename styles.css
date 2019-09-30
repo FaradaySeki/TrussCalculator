@@ -17,6 +17,32 @@ body div#container {
   overflow: hidden;
   margin: 0 auto;
 }
+body div#principalLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  background: #fafafa;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px inset gray;
+}
+body div#principalLeft img {
+  border-radius: 10px;
+  margin-right: 5px;
+  margin-left: 10px;
+}
+body div#principalLeft img:hover {
+  background: #dad3d3;
+  cursor: pointer;
+}
+body div#principalLeft div#middle {
+  align-items: center;
+  text-align: center;
+  margin-right: 90px;
+  margin-bottom: 2px;
+}
 body div#principal {
   background: #fafafa;
   width: 100%;
