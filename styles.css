@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #dad3d3;
+  background-image: url("src\images\gradientgray2.jpg");
+}
+body div#container {
+  background: #fafafa;
+  border-right: 3px double black;
+  border-left: 3px double black;
+  width: 1000px;
+  padding: 0 25px 50px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+body div#principalLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  background: #fafafa;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px inset gray;
+}
+body div#principalLeft img {
+  border-radius: 10px;
+  margin-right: 5px;
+  margin-left: 10px;
+}
+body div#principalLeft img:hover {
+  background: #dad3d3;
+  cursor: pointer;
+}
+body div#principalLeft div#middle {
+  align-items: center;
+  text-align: center;
+  margin-right: 90px;
+  margin-bottom: 2px;
+}
+body div#principal {
+  background: #fafafa;
+  width: 100%;
+  height: 100%;
+}
+body div#principal div {
+  text-align: center;
+}
+body div#principal img {
+  background: rgb(54, 53, 53);
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+body h1 {
+  font-family: "Courier New", Courier, monospace;
+  color: black;
+  font-size: 20px;
+}
+body canvas {
+  border: 3px double black;
+  margin-top: 5px;
+  border-radius: 15px;
+}

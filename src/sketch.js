@@ -1,6 +1,6 @@
-///<reference path="C:\Users\SSRFT-LAB\Desktop\TrussCalculator\node_modules\@types\p5\global.d.ts"/>
+//<reference path="C:\Users\SSRFT-LAB\Desktop\TrussCalculator\node_modules\@types\p5\global.d.ts"/>
 
-const span = document.getElementById("cursor");
+const span = document.getElementById("cords");
 const trash = document.getElementById("trash");
 trash.onclick = () => {
   cnv.clear();

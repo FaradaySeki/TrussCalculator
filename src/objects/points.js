@@ -22,5 +22,3 @@ const nomes = {
   20: "U",
   21: "V"
 };
-
-module.exports = nomes;
