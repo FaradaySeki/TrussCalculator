@@ -68,7 +68,7 @@ function setup() {
 }
 
 function draw() {
-  if(flag_inicio){
+  if(flag_inicio && !flag_vetor){
       desenharGrid(backcnv);
       //let v0 = createVector(start_x,start_y);
      // let ref = createVector(mouseX - start_x,mouseY - start_y);
@@ -95,9 +95,9 @@ function drawLine(base,vec){
     translate(base.x, base.y);
     line(0, 0, vec.x, vec.y);
     rotate(vec.heading());
-    //  let arrowSize = 7;
+    let arrowSize = 7;
     translate(vec.mag(), 0);
-    //triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+    triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
     pop();
   }
 
