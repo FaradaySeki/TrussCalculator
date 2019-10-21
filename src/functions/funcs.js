@@ -14,23 +14,25 @@ function mouseMoved() {
   // let cords = `(${mouseX.toFixed(2)},${mouseY.toFixed(2)})`;
   // text(cords, mouseX + 10, mouseY, 500, 500);
 }
-function desenharGrid(cnv) {
+function desenharGrid(rcnv) {
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
       let x = i * 31;
       let y = j * 31;
-      cnv.stroke(75);
-      cnv.rect(x + 3, y + 1, 31, 31);
+      rcnv.stroke(75);
+      //rcnv.fill(10,0,0,10);
+      rcnv.rect(x + 3, y + 2, 31, 31);
       gridPoints.push({
         ponto_x: x + 3,
-        ponto_y: y + 1
+        ponto_y: y + 2
       });
-      cnv.circle(x + 3, y + 1, 3);
+      //cnv.circle(x + 3, y + 1, 3);
     }
   }
-  image(cnv, 0, 0);
-
-  strokeWeight(2);
+  image(rcnv, 0, 0);
+  stroke(3);
+  //rect(40,40,50,40);
+  loadBarsandPoints();
 }
 function mouseClicked() {
   console.log(`ponto clicado: (${mouseX} , ${mouseY})`);
@@ -55,22 +57,27 @@ function mouseClicked() {
           console.log(barras);
           if (barras.length > 1) {
             const bar = barras[barras.length - 1];
+
             for (let i = 0; i < barras.length - 1; i++) {
               if (barras[i].initx === bar.initx && barras[i].inity === bar.inity) {
-                pontos.push(new Ponto(bar.initx, bar.inity, nomes[pontos.length]))
+                const existe = pontos.find(ponto => ponto.x == bar.initx && ponto.y == bar.inity)
+                if(!existe)pontos.push(new Ponto(bar.initx, bar.inity, nomes[pontos.length]))
               }
               else if (barras[i].endx === bar.initx && barras[i].endy === bar.inity) {
-                pontos.push(new Ponto(bar.initx, bar.inity, nomes[pontos.length]))
+                const existe = pontos.find(ponto => ponto.x == bar.initx && ponto.y == bar.inity)
+                if(!existe)pontos.push(new Ponto(bar.initx, bar.inity, nomes[pontos.length]))
               }
               if (barras[i].initx === bar.endx && barras[i].inity === bar.endy) {
-                pontos.push(new Ponto(bar.endx, bar.endy, nomes[pontos.length]))
+                const existe = pontos.find(ponto => ponto.x == bar.endx && ponto.y == bar.endy)
+                if(!existe)pontos.push(new Ponto(bar.endx, bar.endy, nomes[pontos.length]))
               }
               else if (barras[i].endx === bar.endx && barras[i].endy === bar.endy) {
-                pontos.push(new Ponto(bar.endx, bar.endy, nomes[pontos.length]))
-                flag = true;
+                const existe = pontos.find(ponto => ponto.x == bar.endx && ponto.y == bar.endy)
+                if(!existe)pontos.push(new Ponto(bar.endx, bar.endy, nomes[pontos.length]))
               }
             }
           }
+          
 
 
           //barras.push(new Barra(start_x, start_y, end_x, end_y));
@@ -200,3 +207,14 @@ function PercorrerReta(xinit, yinit, xend, yend, comp) {
   return flag;
 }
 
+function  loadBarsandPoints(){
+  if(barras.length>0){   
+    barras.forEach(barra => {
+      Barra.DesenharBarra(barra.initx,barra.inity,barra.endx,barra.endy)});
+  }
+  if(pontos.length>0){
+    pontos.forEach(ponto => {
+      Ponto.DesenharPonto(ponto.x,ponto.y,ponto.name);
+    })
+  }
+}

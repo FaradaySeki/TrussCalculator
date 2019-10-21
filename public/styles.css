@@ -9,6 +9,7 @@ body {
   background-image: url("./gradientgray2.jpg");
 }
 body div#container {
+  height: 100%;
   background: #fafafa;
   border-right: 3px double black;
   border-left: 3px double black;
@@ -57,6 +58,9 @@ body div#principal img {
   height: 200px;
   margin-top: 10px;
   border-radius: 10px;
+}
+body footer{
+  height: 300px;
 }
 body h1 {
   font-family: "Courier New", Courier, monospace;

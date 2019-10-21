@@ -3,14 +3,15 @@ class Ponto {
     this.name = name;
     this.x = x;
     this.y = y;
-    this.DesenharPonto(x, y, name);
+    Ponto.DesenharPonto(x, y, name);
   }
-  DesenharPonto(x, y, name) {
+  static DesenharPonto(x, y, name) {
     circle(x, y, 7);
 
     textSize(20);
-    textLeading(30);
-    textStyle(BOLDITALIC);
+    textLeading(60);
+    textStyle(ITALIC);
+    fill(255, 165, 0);
     text(name, x, y, 500, 500);
   }
 }

@@ -6,9 +6,9 @@ class Barra {
     this.endy = ey;
     this.defineNewPoints(sx, sy, ex, ey)
     // desenharPonto(this.initx, this.inity, nomes[pontos.length])
-    this.comprimento = this.DesenharBarra(this.initx, this.inity, this.endx, this.endy);
+    this.comprimento = Barra.DesenharBarra(this.initx, this.inity, this.endx, this.endy);
   }
-  DesenharBarra(initx, inity, endx, endy) {
+  static DesenharBarra(initx, inity, endx, endy) {
     line(initx, inity, endx, endy);
     const x = endx - initx;
     const y = endy - inity;
