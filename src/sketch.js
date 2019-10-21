@@ -2,6 +2,19 @@
 
 const span = document.getElementById("cords");
 const trash = document.getElementById("trash");
+const vector = document.getElementById("vector");
+const reta = document.getElementById("bar");
+const movel = document.getElementById("roller");
+const fixo = document.getElementById("fixed");
+const calcular = document.getElementById("calculate");
+
+vector.onclick = () => alert('clicou no vertozim !');
+fixo.onclick = () => alert('clicou no ponto fixo');
+reta.onclick = () => alert('clicou na retinha');
+movel.onclick = () => alert('clicou no ponto movel');
+calcular.onclick = () => alert('clicou no calcular ');
+
+
 trash.onclick = () => {
   cnv.clear();
   desenharGrid(backcnv);
@@ -26,6 +39,10 @@ let start_x = 0,
 
 let flag_inicio = false;
 let flag_pointFirstBar = false;
+let flag_vetor = false;
+let flag_reta = false;
+let flag_pmovel = false;
+let flag_pfixo = false;
 
 let cols = 33;
 let rows = 17;

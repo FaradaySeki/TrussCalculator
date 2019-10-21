@@ -9,7 +9,9 @@ class Barra {
     this.comprimento = Barra.DesenharBarra(this.initx, this.inity, this.endx, this.endy);
   }
   static DesenharBarra(initx, inity, endx, endy) {
+    strokeWeight(4);
     line(initx, inity, endx, endy);
+    strokeWeight(2);
     const x = endx - initx;
     const y = endy - inity;
     const raiz = sqrt(x * x + y * y);
