@@ -10,8 +10,10 @@ trash.onclick = () => {
   componentesY = [];
   pontos = [];
   flag_inicio = false;
+  flag_pointFirstBar = false;
 };
 
+let gridPoints = [];
 let barras = [];
 let componentesX = [];
 let componentesY = [];
@@ -23,16 +25,17 @@ let start_x = 0,
   end_y = 0;
 
 let flag_inicio = false;
+let flag_pointFirstBar = false;
 
-let cols = 34;
-let rows = 16;
+let cols = 33;
+let rows = 17;
 
 let cnv;
 let backcnv;
 
 function setup() {
-  cnv = createCanvas(994, 500);
-  backcnv = createGraphics(994, 500);
+  cnv = createCanvas(1000, 500);
+  backcnv = createGraphics(1000, 500);
   backcnv.strokeWeight(1);
   //cnv.background(0);
   cnv.parent("divUseless");
@@ -42,7 +45,10 @@ function setup() {
   desenharGrid(backcnv);
 }
 
-function draw() { }
+function draw() {
+
+
+}
 
 
 

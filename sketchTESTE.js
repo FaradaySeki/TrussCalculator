@@ -25,6 +25,36 @@ const nomes = {
   21: "V"
 };
 
+try {
+  if (squareClick(mouseX, mouseY)) {
+    if (!flag_inicio) {
+      start_x = mouseX;
+      start_y = mouseY;
+
+      flag_inicio = true;
+    } else {
+      if (!checkBarraisNear()) {
+        end_x = mouseX;
+        end_y = mouseY;
+
+        //pontos.push(new Ponto(end_x, end_y, nomes[pontos.length]));
+        //desenharPonto(start_x, start_y, nomes[pontos.length]);
+        desenharBarra(start_x, start_y, end_x, end_y);
+        if (barras.length > 1) {
+
+        }
+        //barras.push(new Barra(start_x, start_y, end_x, end_y));
+
+        start_x = end_x;
+        start_y = end_y;
+      }
+      else alert('não é possível desenhar barras muito proximas !');
+    }
+  }
+} catch (error) {
+  alert(`error`);
+}
+
 const span = document.getElementById("cursor");
 const trash = document.getElementById("trash");
 trash.onclick = () => {
