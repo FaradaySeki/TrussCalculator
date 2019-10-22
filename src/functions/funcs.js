@@ -61,23 +61,23 @@ function mouseClicked() {
             for (let i = 0; i < barras.length - 1; i++) {
               if (barras[i].initx === bar.initx && barras[i].inity === bar.inity) {
                 const existe = pontos.find(ponto => ponto.x == bar.initx && ponto.y == bar.inity)
-                if(!existe)pontos.push(new Ponto(bar.initx, bar.inity, nomes[pontos.length]))
+                if (!existe) pontos.push(new Ponto(bar.initx, bar.inity, nomes[pontos.length]))
               }
               else if (barras[i].endx === bar.initx && barras[i].endy === bar.inity) {
                 const existe = pontos.find(ponto => ponto.x == bar.initx && ponto.y == bar.inity)
-                if(!existe)pontos.push(new Ponto(bar.initx, bar.inity, nomes[pontos.length]))
+                if (!existe) pontos.push(new Ponto(bar.initx, bar.inity, nomes[pontos.length]))
               }
               if (barras[i].initx === bar.endx && barras[i].inity === bar.endy) {
                 const existe = pontos.find(ponto => ponto.x == bar.endx && ponto.y == bar.endy)
-                if(!existe)pontos.push(new Ponto(bar.endx, bar.endy, nomes[pontos.length]))
+                if (!existe) pontos.push(new Ponto(bar.endx, bar.endy, nomes[pontos.length]))
               }
               else if (barras[i].endx === bar.endx && barras[i].endy === bar.endy) {
                 const existe = pontos.find(ponto => ponto.x == bar.endx && ponto.y == bar.endy)
-                if(!existe)pontos.push(new Ponto(bar.endx, bar.endy, nomes[pontos.length]))
+                if (!existe) pontos.push(new Ponto(bar.endx, bar.endy, nomes[pontos.length]))
               }
             }
           }
-          
+
 
 
           //barras.push(new Barra(start_x, start_y, end_x, end_y));
@@ -85,6 +85,7 @@ function mouseClicked() {
           //   start_x = end_x;
           // start_y = end_y;
           flag_inicio = false;
+          flag_desenhou = true;
         }
         //else alert('não é possível desenhar barras muito proximas !');
       }
@@ -207,14 +208,15 @@ function PercorrerReta(xinit, yinit, xend, yend, comp) {
   return flag;
 }
 
-function  loadBarsandPoints(){
-  if(barras.length>0){   
+function loadBarsandPoints() {
+  if (barras.length > 0) {
     barras.forEach(barra => {
-      Barra.DesenharBarra(barra.initx,barra.inity,barra.endx,barra.endy)});
+      Barra.DesenharBarra(barra.initx, barra.inity, barra.endx, barra.endy)
+    });
   }
-  if(pontos.length>0){
+  if (pontos.length > 0) {
     pontos.forEach(ponto => {
-      Ponto.DesenharPonto(ponto.x,ponto.y,ponto.name);
+      Ponto.DesenharPonto(ponto.x, ponto.y, ponto.name);
     })
   }
 }
