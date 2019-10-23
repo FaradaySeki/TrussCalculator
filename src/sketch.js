@@ -17,13 +17,13 @@ calcular.onclick = () => alert('clicou no calcular ');
 
 trash.onclick = () => {
   cnv.clear();
-  desenharGrid(backcnv);
   barras = [];
   componentesX = [];
   componentesY = [];
   pontos = [];
   flag_inicio = false;
   flag_pointFirstBar = false;
+  desenharGrid(backcnv);
 };
 
 let gridPoints = [];
