@@ -7,8 +7,75 @@ const reta = document.getElementById("bar");
 const movel = document.getElementById("roller");
 const fixo = document.getElementById("fixed");
 const calcular = document.getElementById("calculate");
+//const principal = document.getElementById('principal');
 
-vector.onclick = () => alert('clicou no vertozim !');
+const modal = document.getElementById("myModal");
+const modalContent = document.getElementById("contentModal");
+const spanC = document.getElementsByClassName("close")[0];
+// Get the <span> element that closes the modal
+
+
+// When the user clicks on the button, open the modal
+vector.onclick = function () {
+  flag_vetor = true;
+  flag_inicio = false;
+  flag_desenhou = true;
+  modal.style.display = "block";
+  pontos.forEach(ponto => {
+    const row = document.createElement('div');
+    modalContent.appendChild(row);
+    const radiob = document.createElement('input');
+    radiob.type = 'radio';
+    row.id = `ponto${ponto.name}`;
+    const text = document.createTextNode(`ponto ${ponto.name}`)
+
+    row.appendChild(radiob);
+    row.appendChild(text);
+    //radiob.style.width = '100px';
+    //radiob.innerText = `ponto ${ponto.name}`.toUpperCase();
+    //radiob.innerHTML = `ponto ${ponto.name}`.toUpperCase();
+    //const label = document.createElement('label');
+    //label.innerHTML = `ponto ${ponto.name}`.toUpperCase();
+    //label.style.fontFamily = 'Courier New, Courier, monospace';
+    //label.style.color = 'red';
+    //label.style.fontSize = '15px';
+
+    // radiob.appendChild(label);
+    //adiob.setAttribute("type", "radio");
+    //radiob.setAttribute("name", ponto.name);
+    //radiob.setAttribute("id", `ponto${ponto.name}`);
+
+    //font-family: "Courier New", Courier, monospace;
+    //color: black;
+    //font-size: 20px;
+  })
+
+
+}
+
+// When the user clicks on <span> (x), close the modal
+spanC.onclick = function () {
+  flag_vetor = false;
+  pontos.forEach(ponto => {
+    const radiob = document.getElementById(`ponto${ponto.name}`);
+    modalContent.removeChild(radiob);
+  })
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  flag_vetor = false;
+  if (event.target == modal) {
+    pontos.forEach(ponto => {
+      const radiob = document.getElementById(`ponto${ponto.name}`);
+      modalContent.removeChild(radiob);
+    })
+    modal.style.display = "none";
+  }
+}
+
+//vector.onclick = () => alert('clicou no vertozim !');
 fixo.onclick = () => alert('clicou no ponto fixo');
 reta.onclick = () => alert('clicou na retinha');
 movel.onclick = () => alert('clicou no ponto movel');

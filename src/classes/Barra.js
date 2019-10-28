@@ -7,6 +7,7 @@ class Barra {
     this.defineNewPoints(sx, sy, ex, ey)
     // desenharPonto(this.initx, this.inity, nomes[pontos.length])
     this.comprimento = Barra.DesenharBarra(this.initx, this.inity, this.endx, this.endy);
+    this.vetor = createVector(this.initx, this.inity);
   }
   static DesenharBarra(initx, inity, endx, endy) {
     strokeWeight(4);
