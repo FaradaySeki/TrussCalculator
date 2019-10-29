@@ -21,8 +21,8 @@
           <span class="tooltip"> </span>
         </span>
         <img id="bar" src="../src/images/bar.png" height="40" width="46" alt="" />
-        <img id="roller" src="../src/images/roller.png" height="40" width="45" alt="" />
-        <img id="fixed" src="../src/images/fixed.png" height="40" width="45" alt="" />
+        <img id="roller" src="../src/images/Apoio_Movel.png" height="40" width="45" alt="" />
+        <img id="fixed" src="../src/images/Apoio_Fixo.png" height="40" width="45" alt="" />
       </div>
       <div id="middle">
         <h1>Marcinho Truss Calculator</h1>
@@ -37,11 +37,23 @@
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div id="contentModal" class="modal-content">
-        <div>
           <span class="close">&#9746;</span><!--  &times; 9745; -->
           <span class="close" id="apply">&#9745;</span>
-        </div>
-        <p>Selecione o Ponto no qual deseja aplicar a força</p>
+          <div class = "leftDiv">
+            <p>Selecione o Ponto e Digite a força: </p>
+            <input type="text" id="inputForca"style="margin-right:2px ;margin-left: 5px; height: 15px;">
+            <p>kN</p>
+          </div>
+          <div class = "leftDiv">
+            <p>Posição: </p>
+            <input type="radio" id="Vertical" name="eixo">Vertical
+            <input type="radio" id="Horizontal" name="eixo">Horizontal    
+            <p style="margin-left: 20px;">Sentido: </p>
+            <input type="radio" id="Direita" name="Sentido">Direita
+            <input type="radio" id="Esquerda" name="Sentido">Esquerda
+          </div>
+        <form id="formulario">
+        </form>
       </div>
     </div>
     <footer></footer>
@@ -50,6 +62,7 @@
   <script src="../p5.dom.js"></script>
   <script src="../src/objects/points.js"></script>
   <script src="../src/functions/funcs.js"></script>
+  <script src="../src/functions/actions.js"></script>
   <script src="../src/classes/Vetor.js"></script>
   <script src="../src/classes/Barra.js"></script>
   <script src="../src/classes/Ponto.js"></script>

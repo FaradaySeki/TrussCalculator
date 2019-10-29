@@ -3,6 +3,7 @@ class Ponto {
     this.name = name;
     this.x = x;
     this.y = y;
+    this.forcas = [];
     this.vetor_ref = createVector(this.x, this.y / 2);
     Ponto.DesenharPonto(x, y, name);
   }

@@ -3,7 +3,8 @@ function mouseMoved() {
     let cords = `(${mouseX.toFixed(0)} , ${mouseY.toFixed(0)})`;
     span.textContent = cords;
   }
-
+  if(flag_apply)
+    flag_apply = false;
   //clear();
   //desenharGrid();
   //backcnv.style("z-index", "-1");
@@ -29,17 +30,54 @@ function desenharGrid(rcnv) {
       //cnv.circle(x + 3, y + 1, 3);
     }
   }
+
   image(rcnv, 0, 0);
   stroke(3);
+
+  desespero();
+  
   //rect(40,40,50,40);
   loadBarsandPoints();
+}
+function desespero(){
+  if(!flag_desespero){
+    barras.push(new Barra(282, 312,654 , 312))
+    flag_desespero = true;
+  }
+
+  strokeWeight(2);
+
+  // apoio esquerda
+  line(282,312,251,343);
+  line(282,312,313,343);
+  line(251,343,313,343);
+
+  fill(255, 165, 0);
+  
+  circle(262,345,8);
+  circle(272,345,8);
+  circle(282,345,8);
+  circle(292,345,8);
+  circle(302,345,8);
+
+  // apoio direita
+  line(282+372,312,251+372,343);
+  line(282+372,312,313+372,343);
+  line(251+372,343,313+372,343);
+
+  line(251+382,343,251+377,343+6);
+  line(251+392,343,251+387,343+6);
+  line(251+402,343,251+397,343+6);
+  line(251+412,343,251+407,343+6);
+  line(251+422,343,251+417,343+6);
+
 }
 function mouseClicked() {
   console.log(`ponto clicado: (${mouseX} , ${mouseY})`);
 
 
   try {
-    if (squareClick(mouseX, mouseY)) {
+    if (squareClick(mouseX, mouseY) && !flag_vetor && !flag_apply){
       if (!flag_inicio) {
         start_x = mouseX;
         start_y = mouseY;
@@ -93,6 +131,7 @@ function mouseClicked() {
   } catch (error) {
     alert(`error`);
   }
+  
 }
 function desenharPonto(x, y, nome) {
   if (barras.length !== 0) {

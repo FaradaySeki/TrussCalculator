@@ -109,3 +109,10 @@ body canvas {
   text-decoration: none;
   cursor: pointer;
 }
+
+.leftDiv {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+  align-items: center;
+}
