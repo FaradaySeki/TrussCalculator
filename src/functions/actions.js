@@ -71,6 +71,7 @@ const inputForca = document.getElementById("inputForca");
         }
     }
   })
+  loadBarsandPoints();
   modal.style.display = "none";
 }
 

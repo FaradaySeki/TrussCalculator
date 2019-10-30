@@ -256,6 +256,9 @@ function loadBarsandPoints() {
   if (pontos.length > 0) {
     pontos.forEach(ponto => {
       Ponto.DesenharPonto(ponto.x, ponto.y, ponto.name);
+      ponto.forcas.forEach(obj => {
+        Ponto.DesenharVetor(obj,ponto.x,ponto.y);
+      })
     })
   }
 }
