@@ -44,10 +44,23 @@ function desespero(){
     barras.push(new Barra(282, 312,654 , 312))
     flag_desespero = true;
   }
+  
+  if(!flag_pfixo){
+    const pontoFixo = pontos.find(ponto => {
+      if(ponto.x == 654 && ponto.y == 312)
+        return ponto;
+    })
+    if(pontoFixo){
+      pontoFixo.forcas
+    }
+  }
+  if(!flag_pmovel){
+    flag_pmovel = true;
+  }
 
   strokeWeight(2);
 
-  // apoio esquerda
+  // apoio esquerda movel
   line(282,312,251,343);
   line(282,312,313,343);
   line(251,343,313,343);
@@ -60,7 +73,7 @@ function desespero(){
   circle(292,345,8);
   circle(302,345,8);
 
-  // apoio direita
+  // apoio direita fixo
   line(282+372,312,251+372,343);
   line(282+372,312,313+372,343);
   line(251+372,343,313+372,343);
@@ -71,6 +84,25 @@ function desespero(){
   line(251+412,343,251+407,343+6);
   line(251+422,343,251+417,343+6);
 
+  // reação movel vertical
+  line(654,312,654,312-70);
+  line(654,312-70,654-5,312-65);
+  line(654,312-70,654+5,312-65);
+  textSize(18);
+  text(`Vy`, 654, 312-85, 50, 50);
+
+  // reação fixo ver
+  line(282,312,282,312-70);
+  line(282,312-70,282-5,312-65);
+  line(282,312-70,282+5,312-65);
+  textSize(18);
+  text(`Vx`, 282, 312-85, 50, 50);
+
+  // reação fixo hor
+  line(240,312,282,312);
+  line(282,312,275,312-3)
+  line(282,312,275,312+3)
+  text(`Hx`, 220, 312, 50, 50);
 }
 function mouseClicked() {
   console.log(`ponto clicado: (${mouseX} , ${mouseY})`);

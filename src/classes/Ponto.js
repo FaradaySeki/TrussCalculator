@@ -9,7 +9,7 @@ class Ponto {
   }
   static DesenharPonto(x, y, name) {
     circle(x, y, 8);
-    textSize(20);
+    textSize(18);
     textLeading(60);
     textStyle(ITALIC);
     strokeWeight(2);
