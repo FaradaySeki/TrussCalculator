@@ -7,7 +7,7 @@ class Barra {
     this.defineNewPoints(sx, sy, ex, ey)
     // desenharPonto(this.initx, this.inity, nomes[pontos.length])
     this.comprimento = Barra.DesenharBarra(this.initx, this.inity, this.endx, this.endy);
-    this.vetor = createVector(this.initx, this.inity);
+   // this.vetor = createVector(this.endx, this.endy);
   }
   static DesenharBarra(initx, inity, endx, endy) {
     strokeWeight(4);
@@ -54,4 +54,13 @@ class Barra {
     //console.log(initx, inity, endx, endy);
     //console.log(this.initx, this.inity);
   }
+  retornaAngulo(v1){
+      const dx0  = this.endx - this.initx;
+      const dy0  = this.endy - this.inity;
+      const dx1  = v1.endx - v1.initx;
+      const dy1  = v1.endy - v1.inity;
+      const angle = Math.atan2(dx0 * dy1 - dx1 * dy0, dx0 * dx1 + dy0 * dy1);
+      console.log(angle.toFixed(2));
+      console.log((angle*180/3.1415926).toFixed(2));
+}
 }
