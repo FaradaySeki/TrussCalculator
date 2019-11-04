@@ -44,8 +44,8 @@ function desespero(){
     barras.push(new Barra(282, 312,654 , 312))
     flag_desespero = true;
   }
-  
-  if(!flag_pfixo){
+
+  /*if(!flag_pfixo){
     const pontoFixo = pontos.find(ponto => {
       if(ponto.x == 654 && ponto.y == 312)
         return ponto;
@@ -56,7 +56,7 @@ function desespero(){
   }
   if(!flag_pmovel){
     flag_pmovel = true;
-  }
+  }*/
 
   strokeWeight(2);
 
@@ -85,7 +85,7 @@ function desespero(){
   line(251+422,343,251+417,343+6);
 
   // reação movel vertical
-  line(654,312,654,312-70);
+ /**  line(654,312,654,312-70);
   line(654,312-70,654-5,312-65);
   line(654,312-70,654+5,312-65);
   textSize(18);
@@ -102,7 +102,7 @@ function desespero(){
   line(240,312,282,312);
   line(282,312,275,312-3)
   line(282,312,275,312+3)
-  text(`Hx`, 220, 312, 50, 50);
+  text(`Hx`, 220, 312, 50, 50);*/
 }
 function mouseClicked() {
   console.log(`ponto clicado: (${mouseX} , ${mouseY})`);
@@ -288,6 +288,29 @@ function loadBarsandPoints() {
   if (pontos.length > 0) {
     pontos.forEach(ponto => {
       Ponto.DesenharPonto(ponto.x, ponto.y, ponto.name);
+      if(!flag_pfixo || !flag_pmovel ){
+        if(ponto.x == 282 && ponto.y == 312 && !flag_pmovel){
+          ponto.forcas.push({
+            Forca: 'Vy',
+            Direcao: 'v',
+            Sentido: 'd'
+          });
+          flag_pmovel = true;
+        }
+        else if(ponto.x == 654 && ponto.y == 312 && !flag_pfixo){
+          ponto.forcas.push({
+            Forca: 'Vx',
+            Direcao: 'v',
+            Sentido: 'd'
+          });
+          ponto.forcas.push({
+            Forca: 'Hx',
+            Direcao: 'h',
+            Sentido: 'd'
+          })
+          flag_pfixo = true;
+        }
+      }
       ponto.forcas.forEach(obj => {
         Ponto.DesenharVetor(obj,ponto.x,ponto.y);
       })

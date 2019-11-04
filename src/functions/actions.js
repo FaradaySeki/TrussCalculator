@@ -1,9 +1,9 @@
 const span = document.getElementById("cords");
 const trash = document.getElementById("trash");
 const vector = document.getElementById("vector");
-const reta = document.getElementById("bar");
-const movel = document.getElementById("roller");
-const fixo = document.getElementById("fixed");
+//const reta = document.getElementById("bar");
+//const movel = document.getElementById("roller");
+//const fixo = document.getElementById("fixed");
 const calcular = document.getElementById("calculate");
 //const principal = document.getElementById('principal');
 
@@ -43,8 +43,8 @@ const inputForca = document.getElementById("inputForca");
   flag_apply = true;
   const horizontal = document.getElementById('Horizontal');
   const vertical = document.getElementById('Vertical');
-  const direita = document.getElementById('Direita');
-  const esquerda = document.getElementById('Esquerda');
+  //const direita = document.getElementById('Direita');
+  //const esquerda = document.getElementById('Esquerda');
 
   pontos.forEach(ponto => {
     const radiob = document.getElementById(`ponto${ponto.name}`);
@@ -52,21 +52,23 @@ const inputForca = document.getElementById("inputForca");
     formsContent.removeChild(radiob);
     if(radiob.checked)
     {
+      let f = Number(inputForca.value)
         if(horizontal.checked){
-            if(direita.checked){
-                ponto.forcas.push({Forca : inputForca.value, Direcao: 'h',Sentido: 'd'})
+            if(f>0){
+              ponto.forcas.push({Forca : f, Direcao: 'h',Sentido: 'd'})
             }
-            else if(esquerda.checked){
-                ponto.forcas.push({Forca : inputForca.value, Direcao: 'h',Sentido: 'e'})
+            else {
+              ponto.forcas.push({Forca : f, Direcao: 'h',Sentido: 'e'})
             }
+
         }
         else if(vertical.checked)
         {
-            if(direita.checked){
-                ponto.forcas.push({Forca : inputForca.value, Direcao: 'v',Sentido: 'd'})
+            if(f>0){
+                ponto.forcas.push({Forca : f, Direcao: 'v',Sentido: 'd'})
             }
-            else if(esquerda.checked){
-                ponto.forcas.push({Forca : inputForca.value, Direcao: 'v',Sentido: 'e'})
+            else{
+                ponto.forcas.push({Forca : f, Direcao: 'v',Sentido: 'e'})
             }
         }
     }
@@ -89,18 +91,78 @@ window.onclick = function (event) {
 }
 
 //vector.onclick = () => alert('clicou no vertozim !');
-fixo.onclick = () => {
+//fixo.onclick = () => {
  // document.body.style.cursor = 'url("../src/images/Apoio_Fixo.png")';
  // document.body.style.cursor = 'url("./images/Apoio_Fixo.png")';
  // document.body.style.cursor = img2; 
-  alert('funcionalidade não implementada');
+  //alert('funcionalidade não implementada');
+//}
+//reta.onclick = () => alert('funcionalidade não implementada');
+//movel.onclick = () => alert('funcionalidade não implementada');
+calcular.onclick = () => {
+  const n = barras.length + 3 
+  //console.log(barras.length + 3, pontos.length *2);
+  if(n != pontos.length*2)
+    alert('Não é possível resolver por métodos lineares');
+  else
+    {
+      pontos.forEach(ponto =>{
+       let barsAtPoints = barras.map(bar => {
+          if((bar.initx == ponto.x && bar.inity == ponto.y) ||(bar.endx == ponto.x && bar.endy == ponto.y) )
+            return bar;
+        })
+
+       // console.log(`barras no ponto ${ponto.name}`);
+        //console.log(barsAtPoints);
+        let eqx = [0,0,0]
+        let eqy = [0,0,0]
+
+        if(ponto.x == 282 && ponto.y == 312){
+          if(ponto.forcas.length>1){
+            let sum = 0;
+            ponto.forcas.forEach(f => {
+              if(f.Forca != 'Vy' && f.Direcao == 'v')
+                sum += f.Forca;
+            })
+            eqy = [`${sum} Vy`,0,0]
+          }
+          else
+            eqy = ['Vy',0,0]
+        }
+        else if(ponto.x == 654 && ponto.y == 312){
+          if(ponto.forcas.length>2){
+            let sumV = 0;
+            let sumH = 0;
+            ponto.forcas.forEach(f => {
+              
+              if(f.Forca != 'Vx' && f.Direcao == 'v')
+                sumV += f.Forca;
+              else if(f.Forca != 'Hx' && f.Direcao == 'h')
+                sumH += f.Forca;
+            })
+            sumH >0 ? eqx = [0,0,`${sumH} Hx`] : eqx = [0,0,`Hx`] 
+            eqy = [0,`${sumV} Vx`,0]
+          }
+          else{
+            eqy = [0,'Vx',0]
+            eqx = [0,0,'Hx']
+          }
+
+        }
+        console.log(eqx);
+        console.log(eqy);
+
+        barsAtPoints.forEach(bar=>{
+
+        })
+      })
+    }
 }
-reta.onclick = () => alert('funcionalidade não implementada');
-movel.onclick = () => alert('funcionalidade não implementada');
-calcular.onclick = () => alert('clicou no calcular ');
 
 
 trash.onclick = () => {
+  flag_pmovel = false;
+  flag_pfixo = false;
   flag_desespero = false;
   cnv.clear();
   barras = [];

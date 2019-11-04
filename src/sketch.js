@@ -1,5 +1,6 @@
 //<reference path="C:\Users\SSRFT-LAB\Desktop\TrussCalculator\node_modules\@types\p5\global.d.ts"/>
 
+let eqs = ['Vx','Hx','Vy'];
 let gridPoints = [];
 let barras = [];
 let componentesX = [];

@@ -26,10 +26,18 @@ class Ponto {
     if(Direcao == 'v')
     {
       if(Sentido == 'd'){
-        line(x,y,x,y-50);
-        line(x,y-50,x-5,y-45);
-        line(x,y-50,x+5,y-45);
-        text(`${Forca}kN`, x, y-75, 50, 50);
+        if(Forca == 'Vy' || Forca == 'Vx'){
+          line(x,y,x,y-40);
+          line(x,y-40,x-5,y-35);
+          line(x,y-40,x+5,y-35);
+          text(`${Forca}`, x, y-55, 50, 50);
+        }
+        else{
+          line(x,y,x,y-50);
+          line(x,y-50,x-5,y-45);
+          line(x,y-50,x+5,y-45);
+          text(`${Forca}kN`, x, y-75, 50, 50);
+        }
       }
       else if(Sentido =='e'){
         line(x,y,x,y+50);
@@ -40,10 +48,18 @@ class Ponto {
     }
     else if(Direcao == 'h'){
       if(Sentido == 'd'){
-        line(x,y,x+50,y);
-        line(x+50,y,x+45,y-5)
-        line(x+50,y,x+45,y+5)
-        text(`${Forca}kN`, x+75, y, 50, 50);
+        if(Forca == 'Hx'){
+          line(x,y,x+40,y);
+          line(x+40,y,x+35,y-5)
+          line(x+40,y,x+35,y+5)
+          text(`${Forca}`, x+45, y, 50, 50);
+        }
+        else{
+          line(x,y,x+50,y);
+          line(x+50,y,x+45,y-5)
+          line(x+50,y,x+45,y+5)
+          text(`${Forca}kN`, x+75, y, 50, 50);
+        }
       }
       else if(Sentido == 'e'){
         line(x,y,x-50,y);
