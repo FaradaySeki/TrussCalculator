@@ -104,7 +104,7 @@ calcular.onclick = () => {
   //console.log(barras.length + 3, pontos.length *2);
   if(n != pontos.length*2)
     alert('Não é possível resolver por métodos lineares');
-  else
+  else if(!flag_calculou)
     {
       pontos.forEach(ponto =>{
        let barsAtPoints = barras.map(bar => {
@@ -117,20 +117,25 @@ calcular.onclick = () => {
         let eqx = [0,0,0]
         let eqy = [0,0,0]
 
+        let eqx2 = [0,0,0];
+        let eqy2 = [0,0,0];
+
         if(ponto.x == 282 && ponto.y == 312){
-          if(ponto.forcas.length>1){
+          /*if(ponto.forcas.length>1){
             let sum = 0;
             ponto.forcas.forEach(f => {
               if(f.Forca != 'Vy' && f.Direcao == 'v')
                 sum += f.Forca;
             })
             eqy = [`${sum} Vy`,0,0]
+            eqy2 = [sum,0,0];
           }
-          else
+          else{*/
             eqy = ['Vy',0,0]
-        }
+            eqy2 = [1,0,0];        
+       }
         else if(ponto.x == 654 && ponto.y == 312){
-          if(ponto.forcas.length>2){
+         /* if(ponto.forcas.length>2){
             let sumV = 0;
             let sumH = 0;
             ponto.forcas.forEach(f => {
@@ -140,22 +145,90 @@ calcular.onclick = () => {
               else if(f.Forca != 'Hx' && f.Direcao == 'h')
                 sumH += f.Forca;
             })
-            sumH >0 ? eqx = [0,0,`${sumH} Hx`] : eqx = [0,0,`Hx`] 
+            //sumH > 0 ? eqx = [0,0,`${sumH} Hx`] : eqx = [0,0,`Hx`] 
+            eqx = [0,0,`${sumH} Hx`]
+            eqx2 = [0,0,sumH];
             eqy = [0,`${sumV} Vx`,0]
-          }
-          else{
+            eqy2 = [0,sumV,0];
+          }*/
+          
             eqy = [0,'Vx',0]
             eqx = [0,0,'Hx']
-          }
+            eqy2 = [0,1,0];
+            eqx2 = [0,0,1];
+         
 
         }
-        console.log(eqx);
-        console.log(eqy);
+
+        let somax = 0;
+        let somay = 0;
+        ponto.forcas.forEach(forca => {
+          if(forca.Direcao == 'v' && (forca.Forca != 'Vy'&&forca.Forca != 'Vx'&&forca.Forca != 'Hx')){
+            somay+= forca.Forca;
+          }
+          else if(forca.Direcao == 'h'&& (forca.Forca != 'Vy'&&forca.Forca != 'Vx'&&forca.Forca != 'Hx')){
+            somax+= forca.Forca
+          }
+        })
+        colum.push(somax*-1);
+        colum.push(somay*-1);
+
+  //      console.log(eqx);
+//        console.log(eqy);
+
+        //console.log(barsAtPoints);
 
         barsAtPoints.forEach(bar=>{
+          if(bar)
+          {
+            let angle = bar.retornaAngulo(ponto);
+            if(angle<0)
+              angle*=-1     
 
+            let resultx = Math.sin(angle).toFixed(3);
+            let resulty = Math.cos(angle).toFixed(3);
+
+            const nome = bar.retornaNome();
+            
+            //console.log(nome);
+            eqx.push(`${nome} ${resultx}`);
+            eqx2.push(Number(resultx));
+            eqy.push(`${nome} ${resulty}`);
+            eqy2.push(Number(resulty));
+          }
+          else{
+            eqx.push(0);
+            eqy.push(0);
+            eqx2.push(0);
+            eqy2.push(0);
+          }
         })
+        //iguala zero
+    //    eqx.push(0);
+      //  eqy.push(0);
+        //eqx2.push(0);
+       // eqy2.push(0);
+
+        eqs.push(eqx);
+        eqs.push(eqy);
+        eqs_f.push(eqx2);
+        eqs_f.push(eqy2);
       })
+      // apartir daqui esta tudo organizado no vetor eqs
+      // pendente formatar
+
+     // let equations = $M(eqs_f)
+      
+
+     // const eqns = equations.toRightTriangular();
+
+      flag_calculou = true;
+      //console.log(eqns);
+     // console.log(colum);
+      const results = math.lusolve(eqs_f,colum);
+      //const results = math.lusolve([[1,1,1],[0,2,5],[2,5,-1]],[6,-4,27])
+      console.log(results);
+     // console.log(eqns.e);
     }
 }
 
@@ -164,8 +237,12 @@ trash.onclick = () => {
   flag_pmovel = false;
   flag_pfixo = false;
   flag_desespero = false;
+  flag_calculou = false;
   cnv.clear();
+  colum = [];
   barras = [];
+  eqs= [];
+  eqs_f = [];
   componentesX = [];
   componentesY = [];
   pontos = [];

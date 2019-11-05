@@ -9,6 +9,18 @@ class Barra {
     this.comprimento = Barra.DesenharBarra(this.initx, this.inity, this.endx, this.endy);
    // this.vetor = createVector(this.endx, this.endy);
   }
+  retornaNome(){
+    const pontoi = pontos.find(ponto => {
+      if(ponto.x == this.initx && ponto.y == this.inity)
+        return ponto;
+    })
+    const pontof = pontos.find(ponto => {
+      if(ponto.x == this.endx && ponto.y == this.endy)
+        return ponto;
+    })
+
+    return (pontoi.name+pontof.name);
+  }
   static DesenharBarra(initx, inity, endx, endy) {
     strokeWeight(4);
     line(initx, inity, endx, endy);
@@ -68,7 +80,8 @@ class Barra {
       const dx1  = ponto.x - ponto.x;
       const dy1  = (ponto.y-50) - ponto.y;
       const angle = Math.atan2(dx0 * dy1 - dx1 * dy0, dx0 * dx1 + dy0 * dy1);
-      console.log(angle.toFixed(2));
-      console.log((angle*180/3.1415926).toFixed(2));
+      //console.log(angle.toFixed(2));
+      //console.log((angle*180/3.1415926).toFixed(2));
+      return angle;
 }
 }

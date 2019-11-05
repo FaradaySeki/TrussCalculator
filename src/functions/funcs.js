@@ -107,7 +107,6 @@ function desespero(){
 function mouseClicked() {
   console.log(`ponto clicado: (${mouseX} , ${mouseY})`);
 
-
   try {
     if (squareClick(mouseX, mouseY) && !flag_vetor && !flag_apply){
       if (!flag_inicio) {
@@ -124,6 +123,8 @@ function mouseClicked() {
           //desenharPonto(start_x, start_y, nomes[pontos.length]);
           // desenharBarra(start_x, start_y, end_x, end_y);
           barras.push(new Barra(start_x, start_y, end_x, end_y));
+          const bar = barras[barras.length-1];
+
           console.log(barras);
           if (barras.length > 1) {
             const bar = barras[barras.length - 1];
@@ -276,7 +277,7 @@ function PercorrerReta(xinit, yinit, xend, yend, comp) {
     xinit += xcounter;
     yinit += ycounter;
   }
-  return flag;
+  return {x: xinit, y: yinit}
 }
 
 function loadBarsandPoints() {
