@@ -75,13 +75,25 @@ class Barra {
         this.endx = a;
         this.endy = b;
       }
-      const dx0  = this.endx - this.initx;  
-      const dy0  = this.endy - this.inity;
-      const dx1  = ponto.x - ponto.x;
-      const dy1  = (ponto.y-50) - ponto.y;
-      const angle = Math.atan2(dx0 * dy1 - dx1 * dy0, dx0 * dx1 + dy0 * dy1);
-      //console.log(angle.toFixed(2));
-      //console.log((angle*180/3.1415926).toFixed(2));
-      return angle;
+      if(ponto.y<pontos[0].y){
+        const dx0  = this.endx - this.initx;  
+        const dy0  = this.endy - this.inity;
+        const dx1  = ponto.x - ponto.x;
+        const dy1  = (ponto.y+50) - ponto.y;
+        const angle = Math.atan2(dx0 * dy1 - dx1 * dy0, dx0 * dx1 + dy0 * dy1);
+        //console.log(angle.toFixed(2));
+        //console.log((angle*180/3.1415926).toFixed(2));
+        return angle;
+      }
+      else{
+        const dx0  = this.endx - this.initx;  
+        const dy0  = this.endy - this.inity;
+        const dx1  = ponto.x - ponto.x;
+        const dy1  = (ponto.y-50) - ponto.y;
+        const angle = Math.atan2(dx0 * dy1 - dx1 * dy0, dx0 * dx1 + dy0 * dy1);
+        //console.log(angle.toFixed(2));
+        //console.log((angle*180/3.1415926).toFixed(2));
+        return angle;
+      }
 }
 }

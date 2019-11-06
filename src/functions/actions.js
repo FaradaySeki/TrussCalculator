@@ -1,6 +1,7 @@
 const span = document.getElementById("cords");
 const trash = document.getElementById("trash");
 const vector = document.getElementById("vector");
+const footer = document.getElementById('result');
 //const reta = document.getElementById("bar");
 //const movel = document.getElementById("roller");
 //const fixo = document.getElementById("fixed");
@@ -104,7 +105,7 @@ calcular.onclick = () => {
   //console.log(barras.length + 3, pontos.length *2);
   if(n != pontos.length*2)
     alert('Não é possível resolver por métodos lineares');
-  else if(!flag_calculou)
+  else if(!flag_calculou)//
     {
       pontos.forEach(ponto =>{
        let barsAtPoints = barras.map(bar => {
@@ -225,15 +226,32 @@ calcular.onclick = () => {
       flag_calculou = true;
       //console.log(eqns);
      // console.log(colum);
-      const results = math.lusolve(eqs_f,colum);
+      results = math.lusolve(eqs_f,colum);
       //const results = math.lusolve([[1,1,1],[0,2,5],[2,5,-1]],[6,-4,27])
-      console.log(results);
-     // console.log(eqns.e);
+
+      const resultados = []
+
+      resultados.push({nome: 'Vy' })
+      resultados.push({nome: 'Vx' })
+      resultados.push({nome: 'Hx' })
+
+      barras.forEach(b => resultados.push({nome: b.retornaNome()}));
+      
+      for(let i = 0; i<results.length;i++){
+        resultados[i].valor = results[i][0];
+      }
+    
+      let string_final = ''
+     resultados.forEach(r => {
+        string_final += `${r.nome} = ${r.valor.toFixed(3)} kN\n`
+     });
+     footer.innerText = string_final;
     }
 }
 
 
 trash.onclick = () => {
+  footer.innerText = '';
   flag_pmovel = false;
   flag_pfixo = false;
   flag_desespero = false;

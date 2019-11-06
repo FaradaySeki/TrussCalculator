@@ -8,6 +8,7 @@ let barras = [];
 let componentesX = [];
 let componentesY = [];
 let pontos = [];
+let results = [];
 
 let start_x = 0,
   start_y = 0,

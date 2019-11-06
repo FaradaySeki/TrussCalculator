@@ -84,6 +84,10 @@ function desespero(){
   line(251+412,343,251+407,343+6);
   line(251+422,343,251+417,343+6);
 
+  //
+
+  text(`${barras[0].comprimento}mm`, 450, 320, 50, 50);
+
   // reação movel vertical
  /**  line(654,312,654,312-70);
   line(654,312-70,654-5,312-65);
