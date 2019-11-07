@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Login - Truss Calculator<br> Usuario Padrão: admin/admin</div>
+        <div class="login-item">
+          <form action=""class="form form-login" id ='formsubmit'>
+            <div class="form-field">
+              <label class="user" for="login-username"><span class="hidden">Username</span></label>
+              <input id="login-username" type="text" class="form-input" placeholder="Username" required>
+            </div>
+    
+            <div class="form-field">
+              <label class="lock" for="login-password"><span class="hidden">Password</span></label>
+              <input id="login-password" type="password" class="form-input" placeholder="Password" required>
+            </div>
+    
+            <div class="form-field">
+              <input type="submit" id="logint"value="Log in" formaction="public\index.html">
+            </div>
+          </form>
+        </div>
+    </div>
+    <script>
+        const btnLogin = document.getElementById('logint');
+        const login = document.getElementById('login-username');
+        const pass = document.getElementById('login-password');
+        const form = document.getElementById('formsubmit');
+
+        let user = '';
+        let passw = '';
+        
+        login.onchange = (e) => {
+            user = e.target.value;
+        }
+        pass.onchange = (e) => {
+            passw = e.target.value;
+        }
+
+        form.onsubmit = () => {
+            if(user == 'admin' && passw == 'admin')
+            {
+              user = '';
+              passw = '';
+              login.innerText = '';
+              passw.innerText = '';
+              return true;
+            }
+            else {
+                user = '';
+                passw = '';
+                login.innerText = '';
+                passw.innerText = '';
+                alert('favor cadastrar ou logar com usuario padrão:\nadmin/admin')
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
