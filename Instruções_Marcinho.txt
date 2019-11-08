@@ -1,0 +1,8 @@
+Professor bom dia/tarde/noite !
+
+Na pasta "Testes_Marcinho" estão comparações de treliças calculadas pelo nosso software e o MDSOLIDS que utilizamos para validar o calculo.
+Nosso grid possui quadrados de 31x31.
+
+Para executar nosso programa, com tela de login,basta abrir o arquivo "inicio.html" com algum navegador web. (preferência ao Chrome na versão mais atualizada)
+Caso queira abrir direto sem a tela de login, na pasta "public" execute o arquivo "index.html".
+

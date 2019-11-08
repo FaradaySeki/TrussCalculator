@@ -80,9 +80,16 @@ class Barra {
         const dy0  = this.endy - this.inity;
         const dx1  = ponto.x - ponto.x;
         const dy1  = (ponto.y+50) - ponto.y;
-        const angle = Math.atan2(dx0 * dy1 - dx1 * dy0, dx0 * dx1 + dy0 * dy1);
+        let angle = Math.atan2(dx0 * dy1 - dx1 * dy0, dx0 * dx1 + dy0 * dy1);
         //console.log(angle.toFixed(2));
         //console.log((angle*180/3.1415926).toFixed(2));
+        if(angle<0)
+          angle*=-1
+
+        angle = degrees(angle);
+          if(angle >90 && angle <180)
+            angle -=90
+        angle = radians(angle);
         return angle;
       }
       else{
@@ -90,7 +97,13 @@ class Barra {
         const dy0  = this.endy - this.inity;
         const dx1  = ponto.x - ponto.x;
         const dy1  = (ponto.y-50) - ponto.y;
-        const angle = Math.atan2(dx0 * dy1 - dx1 * dy0, dx0 * dx1 + dy0 * dy1);
+        let angle = Math.atan2(dx0 * dy1 - dx1 * dy0, dx0 * dx1 + dy0 * dy1);
+        if(angle<0)
+          angle*=-1
+        angle = degrees(angle);
+        if(angle >90 && angle <180)
+          angle -=90
+        angle = radians(angle);
         //console.log(angle.toFixed(2));
         //console.log((angle*180/3.1415926).toFixed(2));
         return angle;

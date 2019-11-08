@@ -183,8 +183,7 @@ calcular.onclick = () => {
           if(bar)
           {
             let angle = bar.retornaAngulo(ponto);
-            if(angle<0)
-              angle*=-1     
+            console.log(`Ponto: ${ponto.name}, Barra:${bar.retornaNome()}, Angulo=${degrees(angle)}`)
 
             let resultx = Math.sin(angle).toFixed(3);
             let resulty = Math.cos(angle).toFixed(3);
@@ -257,9 +256,10 @@ trash.onclick = () => {
   flag_desespero = false;
   flag_calculou = false;
   cnv.clear();
-  colum = [];
+  colum = []; 
   barras = [];
   eqs= [];
+  results = [];
   eqs_f = [];
   componentesX = [];
   componentesY = [];

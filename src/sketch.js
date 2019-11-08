@@ -5,8 +5,6 @@ let eqs_f = [];
 let colum = [];
 let gridPoints = [];
 let barras = [];
-let componentesX = [];
-let componentesY = [];
 let pontos = [];
 let results = [];
 
