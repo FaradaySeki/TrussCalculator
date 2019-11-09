@@ -246,6 +246,9 @@ calcular.onclick = () => {
      });
      footer.innerText = string_final;
     }
+    else if(flag_calculou){
+      alert('treliça já calculado, favor clicar na lixeira e recomeçar !')
+    }
 }
 
 

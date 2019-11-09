@@ -24,6 +24,7 @@
     
             <div class="form-field">
               <input type="submit" id="logint"value="Log in" formaction="public\index.html">
+              <input type="submit" style="margin-left: 2px;" id="logReg"value="Registrar" formaction="public\index.html">
             </div>
           </form>
         </div>
@@ -34,10 +35,18 @@
         const login = document.getElementById('login-username');
         const pass = document.getElementById('login-password');
         const form = document.getElementById('formsubmit');
+        const btnReg = document.getElementById('logReg');
 
         let user = '';
         let passw = '';
-        
+
+        const logins = localStorage.getItem('logins');
+
+        btnReg.onclick = () =>{
+          localStorage.setItem('login',user);
+          localStorage.setItem('pass',passw);
+          alert('usuario cadastrado');
+        }      
         login.onchange = (e) => {
             user = e.target.value;
         }
@@ -55,6 +64,11 @@
               return true;
             }
             else {
+                const usuario = localStorage.getItem('login');
+                const senha = localStorage.getItem('pass');
+
+                if(user == usuario && passw == senha)
+                  return true;
                 user = '';
                 passw = '';
                 login.innerText = '';
